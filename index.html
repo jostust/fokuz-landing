@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es-MX" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FOKUZ DESIGN — Diseño visual, IA creativa y contenido para marcas</title>
+    <meta name="description" content="FOKUZ DESIGN: estudio de diseño visual impulsado por IA. Stickers para WhatsApp, pósters, videos, catálogos, branding y más. Diseños premium, rápidos y listos para redes." />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="FOKUZ DESIGN" />
+    <meta property="og:description" content="Diseño visual premium impulsado por IA para marcas y emprendedores." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/og-fokuz.jpg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ["Sora", "ui-sans-serif", "system-ui"] },
+            colors: { primary: "#3b82f6" },
+            boxShadow: {
+              glow: "0 0 0 1px rgba(59,130,246,.25), 0 10px 40px rgba(59,130,246,.35)",
+            },
+            backgroundImage: {
+              grid: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Animación sutil para el logo metálico */
+      .metallic {
+        background: linear-gradient(110deg, #9aa6b2 0%, #ffffff 12%, #a5b4c3 35%, #6b7280 50%, #e5e7eb 65%, #9aa6b2 82%, #ffffff 100%);
+        -webkit-background-clip: text; background-clip: text; color: transparent;
+        filter: drop-shadow(0 10px 30px rgba(59,130,246,.25));
+        background-size: 200% 200%;
+        animation: sheen 4s ease-in-out infinite;
+      }
+      @keyframes sheen { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+      /* Revelado con IntersectionObserver */
+      .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+      .reveal.show { opacity: 1; transform: translateY(0); }
+    </style>
+  </head>
+  <body class="bg-neutral-950 text-white antialiased selection:bg-primary/30 selection:text-white">
+    <!-- Header -->
+    <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-neutral-950/60 border-b border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <a href="#hero" class="flex items-center gap-3">
+          <div class="h-8 w-8 rounded-xl bg-gradient-to-br from-primary/30 to-white/10 shadow-glow"></div>
+          <span class="font-semibold tracking-wide">FOKUZ DESIGN</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-8 text-sm">
+          <a href="#servicios" class="hover:text-primary">Servicios</a>
+          <a href="#porque" class="hover:text-primary">¿Por qué FOKUZ?</a>
+          <a href="#galeria" class="hover:text-primary">Galería</a>
+          <a href="#contacto" class="hover:text-primary">Contacto</a>
+        </nav>
+        <a
+          href="https://wa.me/52TU_NUMERO?text=Hola%20FOKUZ%20DESIGN%2C%20quiero%20cotizar%20un%20proyecto"
+          target="_blank" rel="noopener"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary/90 hover:bg-primary text-white text-sm font-semibold shadow-glow"
+          aria-label="Escríbenos por WhatsApp"
+        >WhatsApp</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section id="hero" class="relative overflow-hidden">
+        <div class="absolute inset-0 -z-10">
+          <div class="absolute -top-32 -left-32 h-96 w-96 rounded-full blur-3xl opacity-40 bg-primary/30"></div>
+          <div class="absolute top-64 -right-40 h-[28rem] w-[28rem] rounded-full blur-3xl opacity-25 bg-blue-300/10"></div>
+          <div class="absolute inset-0 bg-grid bg-[size:24px_24px] [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)]"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center">
+          <div class="reveal show">
+            <p class="uppercase tracking-widest text-xs text-white/70 mb-4">Estudio de diseño visual impulsado por IA</p>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
+              <span class="metallic">FOKUZ DESIGN</span><br/>
+              <span class="text-white">Diseño que conecta <span class="text-primary">tu marca</span> con el mundo</span>
+            </h1>
+            <p class="mt-5 text-white/80 max-w-xl">Creamos stickers para WhatsApp, pósters, videos, catálogos y branding. Producción ágil y calidad premium, listos para redes.</p>
+            <div class="mt-8 flex flex-wrap gap-4">
+              <a href="#galeria" class="px-5 py-3 rounded-xl bg-white text-neutral-900 font-semibold hover:bg-white/90">Ver portafolio</a>
+              <a href="#servicios" class="px-5 py-3 rounded-xl border border-white/20 hover:border-primary/60 hover:text-primary">Nuestros servicios</a>
+            </div>
+          </div>
+
+          <!-- Logo / Arte hero -->
+          <div class="reveal md:justify-self-end">
+            <div class="relative h-72 sm:h-80 md:h-96 aspect-square max-w-md mx-auto">
+              <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-white/5 to-white/0 border border-white/10"></div>
+              <div class="absolute inset-2 rounded-2xl bg-neutral-900/40 backdrop-blur">
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <!-- SVG placeholder del logo metálico -->
+                  <svg viewBox="0 0 300 100" class="w-3/4">
+                    <defs>
+                      <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#9aa6b2" />
+                        <stop offset="12%" stop-color="#ffffff" />
+                        <stop offset="35%" stop-color="#a5b4c3" />
+                        <stop offset="50%" stop-color="#6b7280" />
+                        <stop offset="65%" stop-color="#e5e7eb" />
+                        <stop offset="82%" stop-color="#9aa6b2" />
+                        <stop offset="100%" stop-color="#ffffff" />
+                      </linearGradient>
+                    </defs>
+                    <text x="50%" y="55%" text-anchor="middle" font-size="46" font-weight="800" fill="url(#grad)" style="letter-spacing:2px">FOKUZ</text>
+                    <text x="50%" y="85%" text-anchor="middle" font-size="18" font-weight="600" fill="#9fb7ff">DESIGN</text>
+                  </svg>
+                </div>
+              </div>
+              <div class="absolute -inset-6 rounded-[2rem] border border-primary/20 blur-xl"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICIOS -->
+      <section id="servicios" class="py-16 md:py-24 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="reveal text-center max-w-2xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold">Servicios</h2>
+            <p class="mt-3 text-white/70">Soluciones de alto impacto listas para redes y WhatsApp.</p>
+          </div>
+
+          <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card -->
+            <article class="reveal rounded-2xl border border-white/10 bg-white/5 p-6 hover:border-primary/40 transition">
+              <div class="h-10 w-10 rounded-xl bg-primary/20 flex items-center justify-center mb-4">💬</div>
+              <h3 class="font-semibold text-lg">Stickers para WhatsApp</h3>
+              <p class="text-white/70 mt-2">Paquetes personalizados (pago recibido, pedido enviado, gracias por tu compra, etc.).</p>
+            </article>
+
+            <article class="reveal rounded-2xl border border-white/10 bg-white/5 p-6 hover:border-primary/40 transition">
+              <div class="h-10 w-10 rounded-xl bg-primary/20 flex items-center justify-center mb-4">🖼️</div>
+              <h3 class="font-semibold text-lg">Pósters y contenido</h3>
+              <p class="text-white/70 mt-2">Diseño para Instagram, WhatsApp y Facebook con estilo consistente de feed.</p>
+            </article>
+
+            <article class="reveal rounded-2xl border border-white/10 bg-white/5 p-6 hover:border-primary/40 transition">
+              <div class="h-10 w-10 rounded-xl bg-primary/20 flex items-center justify-center mb-4">🎬</div>
+              <h3 class="font-semibold text-lg">Videos promocionales</h3>
+              <p class="text-white/70 mt-2">Clips cortos orientados a conversión y awareness, listos para Reels.</p>
+            </article>
+
+            <article class="reveal rounded-2xl border border-white/10 bg-white/5 p-6 hover:border-primary/40 transition">
+              <div class="h-10 w-10 rounded-xl bg-primary/20 flex items-center justify-center mb-4">📓</div>
+              <h3 class="font-semibold text-lg">Catálogos digitales</h3>
+              <p class="text-white/70 mt-2">Catálogos y listas de productos optimizados para WhatsApp Business.</p>
+            </article>
+
+            <article class="reveal rounded-2xl border border-white/10 bg-white/5 p-6 hover:border-primary/40 transition">
+              <div class="h-10 w-10 rounded-xl bg-primary/20 flex items-center justify-center mb-4">✨</div>
+              <h3 class="font-semibold text-lg">Branding & logos</h3>
+              <p class="text-white/70 mt-2">Identidad visual, paleta de color, tipografía y aplicaciones coherentes.</p>
+            </article>
+
+            <article class="reveal rounded-2xl border border-white/10 bg-white/5 p-6 hover:border-primary/40 transition">
+              <div class="h-10 w-10 rounded-xl bg-primary/20 flex items-center justify-center mb-4">🤖</div>
+              <h3 class="font-semibold text-lg">IA creativa</h3>
+              <p class="text-white/70 mt-2">Workflows con IA para acelerar producción con calidad profesional.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- POR QUÉ FOKUZ -->
+      <section id="porque" class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="reveal text-center max-w-2xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold">¿Por qué FOKUZ?</h2>
+            <p class="mt-3 text-white/70">Combinamos creatividad, estrategia y velocidad.</p>
+          </div>
+
+          <div class="mt-12 grid md:grid-cols-4 gap-6">
+            <div class="reveal rounded-2xl border border-white/10 bg-white/5 p-6">
+              <p class="text-2xl">🎨</p>
+              <h3 class="mt-3 font-semibold">Calidad premium</h3>
+              <p class="text-white/70 mt-2">Estética cuidada y coherente para marcas profesionales.</p>
+            </div>
+            <div class="reveal rounded-2xl border border-white/10 bg-white/5 p-6">
+              <p class="text-2xl">⚡</p>
+              <h3 class="mt-3 font-semibold">Entrega rápida</h3>
+              <p class="text-white/70 mt-2">Procesos eficientes y comunicación directa.</p>
+            </div>
+            <div class="reveal rounded-2xl border border-white/10 bg-white/5 p-6">
+              <p class="text-2xl">📱</p>
+              <h3 class="mt-3 font-semibold">Listo para redes</h3>
+              <p class="text-white/70 mt-2">Formatos para Instagram, WhatsApp y anuncios.</p>
+            </div>
+            <div class="reveal rounded-2xl border border-white/10 bg-white/5 p-6">
+              <p class="text-2xl">🤝</p>
+              <h3 class="mt-3 font-semibold">Acompañamiento</h3>
+              <p class="text-white/70 mt-2">Te guiamos con propuestas claras y útiles.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GALERÍA -->
+      <section id="galeria" class="py-16 md:py-24 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="reveal text-center max-w-xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold">Galería</h2>
+            <p class="mt-3 text-white/70">Una selección de trabajos recientes. (Reemplaza los placeholders con tus imágenes).</p>
+          </div>
+
+          <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- 9 placeholders -->
+            <!-- Cada figura puede reemplazarse por <img src="/ruta.jpg" alt="Proyecto" class="..."/> -->
+            <figure class="reveal group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 aspect-[4/5]">
+              <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-white/0"></div>
+              <figcaption class="absolute bottom-0 left-0 right-0 p-4 text-sm bg-neutral-900/50 backdrop-blur translate-y-8 group-hover:translate-y-0 transition">Proyecto 1 — Stickers</figcaption>
+            </figure>
+            <figure class="reveal group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 aspect-[4/5]"><figcaption class="absolute bottom-0 left-0 right-0 p-4 text-sm bg-neutral-900/50 backdrop-blur translate-y-8 group-hover:translate-y-0 transition">Proyecto 2 — Póster</figcaption></figure>
+            <figure class="reveal group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 aspect-[4/5]"><figcaption class="absolute bottom-0 left-0 right-0 p-4 text-sm bg-neutral-900/50 backdrop-blur translate-y-8 group-hover:translate-y-0 transition">Proyecto 3 — Video</figcaption></figure>
+            <figure class="reveal group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 aspect-[4/5]"><figcaption class="absolute bottom-0 left-0 right-0 p-4 text-sm bg-neutral-900/50 backdrop-blur translate-y-8 group-hover:translate-y-0 transition">Proyecto 4 — Catálogo</figcaption></figure>
+            <figure class="reveal group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 aspect-[4/5]"><figcaption class="absolute bottom-0 left-0 right-0 p-4 text-sm bg-neutral-900/50 backdrop-blur translate-y-8 group-hover:translate-y-0 transition">Proyecto 5 — Branding</figcaption></figure>
+            <figure class="reveal group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 aspect-[4/5]"><figcaption class="absolute bottom-0 left-0 right-0 p-4 text-sm bg-neutral-900/50 backdrop-blur translate-y-8 group-hover:translate-y-0 transition">Proyecto 6 — Redes</figcaption></figure>
+            <figure class="reveal group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 aspect-[4/5]"><figcaption class="absolute bottom-0 left-0 right-0 p-4 text-sm bg-neutral-900/50 backdrop-blur translate-y-8 group-hover:translate-y-0 transition">Proyecto 7 — Fotomontaje</figcaption></figure>
+            <figure class="reveal group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 aspect-[4/5]"><figcaption class="absolute bottom-0 left-0 right-0 p-4 text-sm bg-neutral-900/50 backdrop-blur translate-y-8 group-hover:translate-y-0 transition">Proyecto 8 — Producto</figcaption></figure>
+            <figure class="reveal group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 aspect-[4/5]"><figcaption class="absolute bottom-0 left-0 right-0 p-4 text-sm bg-neutral-900/50 backdrop-blur translate-y-8 group-hover:translate-y-0 transition">Proyecto 9 — Motion</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- OPINIONES / CLIENTES -->
+      <section id="clientes" class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="reveal text-center max-w-xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold">Opiniones</h2>
+            <p class="mt-3 text-white/70">Espacio para testimonios o logos de clientes.</p>
+          </div>
+
+          <div class="mt-12 grid md:grid-cols-3 gap-6">
+            <blockquote class="reveal rounded-2xl border border-white/10 bg-white/5 p-6">
+              <p class="text-white/80">“Excelente atención y resultados que elevan la marca.”</p>
+              <footer class="mt-3 text-white/60 text-sm">Cliente — Industria</footer>
+            </blockquote>
+            <blockquote class="reveal rounded-2xl border border-white/10 bg-white/5 p-6">
+              <p class="text-white/80">“Rápidos, creativos y profesionales. Recomendado.”</p>
+              <footer class="mt-3 text-white/60 text-sm">Cliente — Ecommerce</footer>
+            </blockquote>
+            <blockquote class="reveal rounded-2xl border border-white/10 bg-white/5 p-6">
+              <p class="text-white/80">“Diseño consistente para redes, justo lo que necesitábamos.”</p>
+              <footer class="mt-3 text-white/60 text-sm">Cliente — Servicios</footer>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACTO -->
+      <section id="contacto" class="py-16 md:py-24 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="reveal text-center max-w-2xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold">Hablemos</h2>
+            <p class="mt-3 text-white/70">Cuéntanos sobre tu proyecto y te proponemos la mejor ruta.</p>
+          </div>
+
+          <div class="mt-12 grid md:grid-cols-2 gap-8">
+            <!-- CTA WhatsApp -->
+            <div class="reveal rounded-2xl border border-white/10 bg-white/5 p-6">
+              <h3 class="font-semibold text-xl">Contacto directo</h3>
+              <p class="text-white/70 mt-2">Escríbenos y agenda una llamada rápida.</p>
+              <a
+                href="https://wa.me/52TU_NUMERO?text=Hola%20FOKUZ%20DESIGN%2C%20quiero%20cotizar%20un%20proyecto"
+                target="_blank" rel="noopener"
+                class="mt-4 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-primary/90 hover:bg-primary text-white font-semibold shadow-glow"
+              >WhatsApp</a>
+              <p class="text-xs text-white/50 mt-3">Reemplaza <span class="font-mono">TU_NUMERO</span> por tu número con lada 52.</p>
+            </div>
+
+            <!-- Formulario (Netlify Ready) -->
+            <form name="contacto" method="POST" data-netlify="true" class="reveal rounded-2xl border border-white/10 bg-white/5 p-6">
+              <input type="hidden" name="form-name" value="contacto" />
+              <div class="grid gap-4">
+                <label class="block">
+                  <span class="text-sm text-white/80">Nombre</span>
+                  <input name="nombre" required class="mt-1 w-full rounded-lg bg-neutral-900 border border-white/10 px-4 py-3 outline-none focus:border-primary/60" placeholder="Tu nombre" />
+                </label>
+                <label class="block">
+                  <span class="text-sm text-white/80">Email</span>
+                  <input name="email" type="email" required class="mt-1 w-full rounded-lg bg-neutral-900 border border-white/10 px-4 py-3 outline-none focus:border-primary/60" placeholder="tucorreo@ejemplo.com" />
+                </label>
+                <label class="block">
+                  <span class="text-sm text-white/80">Mensaje</span>
+                  <textarea name="mensaje" rows="4" required class="mt-1 w-full rounded-lg bg-neutral-900 border border-white/10 px-4 py-3 outline-none focus:border-primary/60" placeholder="Cuéntanos sobre tu proyecto"></textarea>
+                </label>
+                <button type="submit" class="mt-2 inline-flex justify-center px-5 py-3 rounded-xl bg-white text-neutral-900 font-semibold hover:bg-white/90">Enviar</button>
+                <p class="text-xs text-white/50">Este formulario está listo para Netlify (sin backend adicional).</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-10 border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-white/60">
+        <p>© <span id="year"></span> FOKUZ DESIGN — Todos los derechos reservados</p>
+      </div>
+    </footer>
+
+    <script>
+      // Año automático
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Revelado en scroll
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
