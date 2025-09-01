@@ -363,67 +363,39 @@
     mobileMenu.classList.toggle('hidden');
   });
 </script>
-    <!-- FAB flotante: botón chat + 3 burbujas -->
+    <!-- FAB flotante: usa tus iconos SVG -->
 <div id="fab" class="fixed bottom-4 right-4 z-50">
-  <!-- Menú de burbujas (se anima con la clase .fab-open en el contenedor #fab) -->
+  <!-- Burbujas -->
   <div id="fab-bubbles" class="absolute bottom-16 right-0 flex flex-col items-end gap-2">
-    <!-- WhatsApp (arriba) -->
-<a href="https://wa.me/525576671603?text=Hola%20estoy%20interesado%20en%20información%20para"
-   target="_blank" rel="noopener"
-   class="fab-bubble h-12 w-12 rounded-full bg-green-500 text-white shadow-lg flex items-center justify-center ring-1 ring-white/10"
-   title="WhatsApp" style="transition-delay: 40ms;">
-  <!-- Icono WA -->
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 32 32" fill="currentColor">
-    <path d="M16 .5C7.2.5.1 7.6.1 16.4c0 2.9.8 5.6 2.2 7.9L.1 31.5l7.4-2.2c2.2 1.2 4.8 1.9 7.5 1.9 8.8 0 15.9-7.1 15.9-15.9S24.8.5 16 .5zm0 28.8c-2.4 0-4.7-.6-6.7-1.7l-.5-.3-4.4 1.3 1.3-4.3-.3-.5c-1.3-2.1-2-4.5-2-7.1 0-7.3 5.9-13.2 13.2-13.2 7.3 0 13.2 5.9 13.2 13.2-.1 7.3-6 13.3-13.3 13.3z"/>
-    <path d="M23 19.5c-.4-.2-2.3-1.1-2.6-1.2s-.6-.2-.9.2-1 1.2-1.2 1.5c-.2.2-.4.3-.8.1s-1.6-.6-3-1.9c-1.1-1-1.9-2.3-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.6.2-.2.3-.4.5-.6.2-.2.1-.4 0-.6s-.9-2.1-1.2-2.9c-.3-.7-.6-.6-.9-.6h-.8c-.3 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.3 1.4 3.5c.2.2 2.4 3.7 5.8 5.2.8.3 1.5.6 2 .7.8.2 1.6.2 2.2.1.7-.1 2.3-1 2.6-1.8.3-.8.3-1.5.2-1.6 0-.2-.2-.3-.6-.5z"/>
-  </svg>
-</a>
+    <!-- WhatsApp -->
+    <a href="https://wa.me/525576671603?text=Hola%20estoy%20interesado%20en%20información%20para"
+       target="_blank" rel="noopener"
+       class="fab-bubble h-12 w-12 rounded-full bg-white/95 shadow-lg flex items-center justify-center ring-1 ring-white/10"
+       title="WhatsApp" style="transition-delay: 40ms;">
+      <img src="/whatsapp-icon.svg" alt="WhatsApp" class="h-7 w-7" loading="lazy">
+    </a>
 
     <!-- Instagram -->
-<a href="https://www.instagram.com/fokuz.design" target="_blank" rel="noopener"
-   class="fab-bubble h-12 w-12 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 text-white shadow-lg flex items-center justify-center ring-1 ring-white/10"
-   title="Instagram" style="transition-delay: 90ms;">
-  <!-- Ícono oficial de Instagram -->
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-6 w-6" fill="currentColor">
-    <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 
-             114.9 114.9 114.9-51.3 114.9-114.9S287.7 141 
-             224.1 141zm0 189.6c-41.3 0-74.7-33.4-74.7-74.7 
-             s33.4-74.7 74.7-74.7 74.7 33.4 74.7 74.7-33.4 
-             74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.9-26.9 
-             26.9-14.9 0-26.9-12-26.9-26.9s12-26.9 
-             26.9-26.9 26.9 12 26.9 26.9zm76.1 
-             27.2c-1.7-35.9-9.9-67.7-36.2-93.9S382.3 
-             27.7 346.4 26C310.3 24.3 137.7 24.3 101.6 
-             26 65.7 27.7 33.9 35.9 7.7 62.1S-1.7 
-             127.7.1 163.6c1.7 36.1 1.7 208.7 0 
-             244.8-1.7 35.9 6.5 67.7 32.7 
-             93.9s58 34.4 93.9 36.2c36.1 1.7 
-             208.7 1.7 244.8 0 35.9-1.7 67.7-9.9 
-             93.9-36.2s34.4-58 36.2-93.9c1.7-36.1 
-             1.7-208.7 0-244.8zM398.8 388c-7.8 
-             19.5-22.9 34.6-42.4 42.4-29.4 
-             11.7-99.2 9-132.3 9s-102.9 2.6-132.3-9c-19.5-7.8-34.6-22.9-42.4-42.4-11.7-29.4-9-99.2-9-132.3s-2.6-102.9 9-132.3c7.8-19.5 
-             22.9-34.6 42.4-42.4 29.4-11.7 
-             99.2-9 132.3-9s102.9-2.6 132.3 
-             9c19.5 7.8 34.6 22.9 42.4 42.4 
-             11.7 29.4 9 99.2 9 132.3s2.7 
-             102.9-9 132.3z"/>
-  </svg>
-</a>
+    <a href="https://www.instagram.com/fokuz.design" target="_blank" rel="noopener"
+       class="fab-bubble h-12 w-12 rounded-full bg-white/95 shadow-lg flex items-center justify-center ring-1 ring-white/10"
+       title="Instagram" style="transition-delay: 90ms;">
+      <img src="/instagram.icon.svg" alt="Instagram" class="h-7 w-7" loading="lazy">
+    </a>
 
-    <!-- Email (Gmail) -->
-<a href="mailto:fokuzdesignmx@gmail.com"
-   class="fab-bubble h-12 w-12 rounded-full bg-white text-white shadow-lg flex items-center justify-center ring-1 ring-white/10"
-   title="Email" style="transition-delay: 140ms;">
-  <!-- Ícono oficial Gmail -->
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-6 w-6">
-    <path fill="#EA4335" d="M64 128l192 144L448 128v256H64z"/>
-    <path fill="#FBBC05" d="M64 128l192 144L448 128H64z"/>
-    <path fill="#34A853" d="M64 384V128l192 144z"/>
-    <path fill="#4285F4" d="M448 128v256L256 272z"/>
-    <path fill="none" stroke="#EA4335" stroke-width="48" d="M64 128l192 144L448 128"/>
-  </svg>
-</a>
+    <!-- Email -->
+    <a href="mailto:fokuzdesignmx@gmail.com"
+       class="fab-bubble h-12 w-12 rounded-full bg-white/95 shadow-lg flex items-center justify-center ring-1 ring-white/10"
+       title="Email" style="transition-delay: 140ms;">
+      <img src="/mail-icon.svg" alt="Email" class="h-7 w-7" loading="lazy">
+    </a>
+  </div>
+
+  <!-- Botón principal (siempre visible) -->
+  <button id="fab-toggle"
+          class="h-14 w-14 rounded-full bg-primary text-white shadow-xl ring-1 ring-white/10 flex items-center justify-center"
+          aria-expanded="false" aria-controls="fab-bubbles" title="Contacto">
+    <img src="/contact-icon.svg" alt="Contacto" class="h-7 w-7" loading="lazy">
+  </button>
   </div>
 
   <!-- Botón principal (chat) -->
