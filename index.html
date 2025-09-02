@@ -154,28 +154,46 @@
 </div>
       </section>
 <!-- BRANDING -->
-<section id="branding" class="relative overflow-hidden py-24 border-t border-white/10">
-  <!-- Video de fondo -->
-  <div class="absolute inset-0 -z-10">
-    <video autoplay muted loop playsinline class="w-full h-full object-cover">
+<section id="branding" class="relative overflow-hidden border-t border-white/10">
+  <div class="scroll-clip relative h-[140vh] md:h-[180vh]">
+    <!-- Fondo video con parallax/zoom -->
+    <video id="brandingVideo" autoplay muted loop playsinline
+           class="absolute inset-0 w-full h-full object-cover will-change-transform">
       <source src="branding-video.mp4" type="video/mp4" />
     </video>
-    <!-- Overlay oscuro para contraste -->
-    <div class="absolute inset-0 bg-black/50"></div>
-  </div>
 
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h2 class="text-4xl md:text-5xl font-extrabold metallic">Branding & Rebranding</h2>
-    <p class="mt-4 text-xl md:text-2xl text-white/90">
-      Tu marca no necesita un logo, necesita una identidad.
-    </p>
-    <p class="mt-6 text-white/70 max-w-2xl mx-auto">
-      Creamos identidades visuales que hablan por ti: desde logos memorables hasta paletas de color 
-      y aplicaciones que dan coherencia y poder a tu marca.
-    </p>
+    <!-- Oscurecido sutil para que el texto siempre se lea -->
+    <div id="brandingOverlay" class="absolute inset-0 bg-black/55 md:bg-black/50 pointer-events-none"></div>
+
+    <!-- Texto sticky (permanece en pantalla mientras scrolleas esta sección) -->
+    <div class="sticky top-0 h-screen flex items-center">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl md:text-5xl font-extrabold metallic">
+          Branding & Rebranding
+        </h2>
+        <p class="mt-4 text-xl md:text-2xl text-white/95">
+          Tu marca no necesita un logo, necesita una identidad.
+        </p>
+        <p class="mt-6 text-white/75 max-w-2xl mx-auto">
+          Diseñamos sistemas visuales consistentes: logo, paleta, tipografía y
+          aplicaciones que hacen que te reconozcan a primera vista.
+        </p>
+
+        <!-- (Opcional) mini CTAs -->
+        <div class="mt-8 flex items-center justify-center gap-3">
+          <a href="#contacto"
+             class="px-5 py-3 rounded-xl bg-white text-neutral-900 font-semibold hover:bg-white/90">
+            Cotizar branding
+          </a>
+          <a href="#galeria"
+             class="px-5 py-3 rounded-xl border border-white/20 hover:border-primary/60 hover:text-primary">
+            Ver casos
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
-</section>
-      <!-- SERVICIOS -->
+</section>      <!-- SERVICIOS -->
       <section id="servicios" class="py-16 md:py-24 border-t border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="reveal text-center max-w-2xl mx-auto">
