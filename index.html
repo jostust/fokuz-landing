@@ -156,27 +156,32 @@
 </div>
       </section>
 <!-- BRANDING -->
-<section id="branding" class="relative overflow-hidden border-t border-white/10">
-  <div class="scroll-clip relative h-[140vh] md:h-[180vh]">
-    <!-- Fondo video con parallax/zoom -->
-    <video id="brandingVideo" autoplay muted loop playsinline
-           class="absolute inset-0 w-full h-full object-cover will-change-transform">
-      <source src="branding-video.mp4" type="video/mp4" />
+<section id="branding" class="relative overflow-hidden">
+  <div class="scroll-clip relative h-[52vh] md:h-[68vh] lg:h-[72vh]">  <!-- MENOS alto -->
+    <!-- Capa oscura / overlay -->
+    <div id="brandingOverlay" class="pointer-events-none absolute inset-0 z-10"></div>
+
+    <!-- Video -->
+    <video id="brandingVideo"
+           class="absolute inset-0 w-full h-full object-cover object-center"  <!-- llena ancho; recorte leve OK -->
+           autoplay muted loop playsinline>
+      <source src="branding-video.mp4" type="video/mp4">
     </video>
 
-    <!-- Oscurecido sutil para que el texto siempre se lea -->
-    <div id="brandingOverlay" class="absolute inset-0 bg-black/55 md:bg-black/50 pointer-events-none"></div>
-
-    <!-- Texto sticky (permanece en pantalla mientras scrolleas esta sección) -->
-    <div class="sticky top-0 h-screen flex items-center">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-4xl md:text-5xl font-extrabold metallic">
+    <!-- Texto centrado -->
+    <div class="absolute inset-0 z-20 flex items-center justify-center px-4">
+      <div class="max-w-4xl text-center">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
           Branding & Rebranding
         </h2>
-        <p class="mt-4 text-xl md:text-2xl text-white/95">
+        <p class="mt-3 text-white/80 text-sm sm:text-base md:text-lg">
           Tu marca no necesita un logo, necesita una identidad.
         </p>
-        <p class="mt-6 text-white/75 max-w-2xl mx-auto">
+      </div>
+    </div>
+  </div>
+</section>
+      <p class="mt-6 text-white/75 max-w-2xl mx-auto">
           Diseñamos sistemas visuales consistentes: logo, paleta, tipografía y
           aplicaciones que hacen que te reconozcan a primera vista.
         </p>
@@ -515,5 +520,41 @@
     onScroll();
   })();
 </script>
+    <script>
+      // Toggle del FAB (abre/cierra burbujas)
+      (function () {
+        const fab = document.getElementById('fab');
+        const fabToggle = document.getElementById('fab-toggle');
+        if (fab && fabToggle) {
+          fabToggle.addEventListener('click', () => {
+            fab.classList.toggle('fab-open');
+            fabToggle.setAttribute(
+              'aria-expanded',
+              fab.classList.contains('fab-open') ? 'true' : 'false'
+            );
+          });
+        }
+      })();
+    </script>
+
+    <!-- Script para animación del video de branding -->
+    <script>
+      const brandingVideo = document.getElementById("brandingVideo");
+      const brandingOverlay = document.getElementById("brandingOverlay");
+
+      window.addEventListener("scroll", () => {
+        const section = document.getElementById("branding");
+        const rect = section.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        if (rect.top < windowHeight && rect.bottom > 0) {
+          const progress = 1 - rect.top / windowHeight;
+          brandingVideo.style.transform = `scale(${1 + progress * 0.1})`;
+          brandingOverlay.style.backgroundColor = `rgba(0,0,0,${0.3 + progress * 0.2})`;
+        }
+      });
+    </script>
+  </body>
+</html>
   </body>
 </html>
