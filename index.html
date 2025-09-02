@@ -69,6 +69,8 @@
     transform: translateY(0) scale(1);
     opacity: 1;
   }
+      <style>
+  .will-change-transform { will-change: transform; }
 </style>
   </head>
   <body class="bg-neutral-950 text-white antialiased selection:bg-primary/30 selection:text-white">
@@ -463,6 +465,54 @@
         );
       });
     }
+  })();
+</script>
+    <script>
+  (function () {
+    const section = document.querySelector('#branding .scroll-clip');
+    const video   = document.getElementById('brandingVideo');
+    const overlay = document.getElementById('brandingOverlay');
+
+    if (!section || !video || !overlay) return;
+
+    const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
+
+    function onScroll() {
+      const rect = section.getBoundingClientRect();
+      const vh   = window.innerHeight;
+
+      // Progreso 0 → 1 a lo largo de la sección
+      const total = rect.height - vh;
+      const seen  = clamp((vh - rect.top) / (total || 1), 0, 1);
+
+      // Zoom muy sutil del video (no marear ni distraer)
+      const scale = 1 + seen * 0.18; // 18% máx
+      video.style.transform = `scale(${scale})`;
+
+      // Ligera variación del overlay (más claro al inicio, un poco más oscuro al final)
+      const alpha = 0.55 + seen * 0.10; // 0.55 → 0.65
+      overlay.style.backgroundColor = `rgba(0,0,0,${alpha})`;
+    }
+
+    // Soporte para “reduced motion”
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mq.matches) {
+      video.style.transform = 'none';
+      overlay.style.backgroundColor = 'rgba(0,0,0,0.6)';
+      return;
+    }
+
+    // Listeners
+    let ticking = false;
+    function request() {
+      if (!ticking) {
+        requestAnimationFrame(() => { onScroll(); ticking = false; });
+        ticking = true;
+      }
+    }
+    window.addEventListener('scroll', request, { passive: true });
+    window.addEventListener('resize', request);
+    onScroll();
   })();
 </script>
   </body>
