@@ -38,9 +38,11 @@
     </script>
 
     <style>
-  /* Animación sutil para el logo metálico */
+  /* =========================
+     Efecto metálico del logo
+  ========================== */
   .metallic {
-    background: linear-gradient(110deg, #9aa6b2 0%, #ffffff 12%, #a5b4c3 35%, #6b7280 50%, #e5e7eb 65%, #9aa6b2 82%, #ffffff 100%);
+    background: linear-gradient(110deg,#9aa6b2 0%,#ffffff 12%,#a5b4c3 35%,#6b7280 50%,#e5e7eb 65%,#9aa6b2 82%,#ffffff 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -48,31 +50,27 @@
     background-size: 200% 200%;
     animation: sheen 4s ease-in-out infinite;
   }
-
-  @keyframes sheen { 
-    0% { background-position: 0% 50%; } 
-    50% { background-position: 100% 50%; } 
-    100% { background-position: 0% 50%; } 
+  @keyframes sheen {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
-  /* Revelado con IntersectionObserver */
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
-  .reveal.show { opacity: 1; transform: translateY(0); }
-
-  /* Animación de burbujas del FAB */
-  .fab-bubble{
-    transition: transform .25s ease, opacity .25s ease;
-    transform: translateY(8px) scale(.9);
+  /* =========================
+     Animaciones de entrada
+  ========================== */
+  .reveal {
     opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .8s ease, transform .8s ease;
   }
-  .fab-open .fab-bubble{
-    transform: translateY(0) scale(1);
+  .reveal.show {
     opacity: 1;
+    transform: translateY(0);
   }
-      <style>
-  /* Aparición tipo pop (suave) */
-  .pop { 
-    opacity: 0; 
+
+  .pop {
+    opacity: 0;
     transform: translateY(8px) scale(.985);
     transition: opacity .6s ease, transform .6s ease;
   }
@@ -80,8 +78,80 @@
     opacity: 1;
     transform: translateY(0) scale(1);
   }
-      <style>
+
+  /* Pequeños hints de performance */
   .will-change-transform { will-change: transform; }
+  .will-change-opacity { will-change: opacity; }
+
+  /* =========================
+     FAB (botón flotante)
+  ========================== */
+  .fab-bubble {
+    transition: transform .25s ease, opacity .25s ease;
+    transform: translateY(8px) scale(.9);
+    opacity: 0;
+  }
+  .fab-open .fab-bubble {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  /* =========================
+     HERO / LANDING PAGES
+     (bloques tipo branding / web)
+  ========================== */
+  /* Máscara vertical sutil para que el fondo se desvanezca arriba/abajo */
+  .mask-vert-soft {
+    --mask-grad: linear-gradient(to bottom,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,.12) 8%,
+      rgba(0,0,0,.35) 85%,
+      rgba(0,0,0,0) 100%);
+    -webkit-mask-image: var(--mask-grad);
+            mask-image: var(--mask-grad);
+  }
+
+  /* Capa oscura reutilizable sobre imágenes / videos */
+  .overlay-dark-30::before,
+  .overlay-dark-40::before,
+  .overlay-dark-50::before {
+    content: "";
+    position: absolute; inset: 0;
+    pointer-events: none;
+  }
+  .overlay-dark-30::before { background: rgba(0,0,0,.30); }
+  .overlay-dark-40::before { background: rgba(0,0,0,.40); }
+  .overlay-dark-50::before { background: rgba(0,0,0,.50); }
+
+  /* Pan/zoom sutil (útil para imagen de “Web & Landing Pages”) */
+  @keyframes subtle-pan {
+    0%   { transform: scale(1.04) translateX(0); }
+    100% { transform: scale(1.10) translateX(-2%); }
+  }
+  .pan-slow {
+    animation: subtle-pan 18s ease-in-out infinite alternate;
+    transform-origin: center;
+  }
+
+  /* Ajustes de altura de los bloques hero */
+  .hero-h {
+    /* móvil: un poco más bajo que pantalla completa para no “aplastar” */
+    min-height: 56vh;
+    height: 56vh;
+  }
+  @media (min-width: 640px) { /* sm */
+    .hero-h { min-height: 64vh; height: 64vh; }
+  }
+  @media (min-width: 1024px) { /* lg */
+    .hero-h { min-height: 72vh; height: 72vh; }
+  }
+
+  /* Imagen/video de fondo: cubrir ancho y recortar lo justo */
+  .hero-media {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
 </style>
   </head>
   <body class="bg-neutral-950 text-white antialiased selection:bg-primary/30 selection:text-white">
@@ -203,6 +273,49 @@
           <a href="#galeria"
              class="px-5 py-3 rounded-xl border border-white/20 hover:border-primary/60 hover:text-primary">
             Ver casos
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+      <!-- LANDING PAGES -->
+<section id="landing" class="relative overflow-hidden border-t border-white/10">
+  <div class="relative h-[56vh] md:h-[60vh] lg:h-[58vh]">
+    <!-- Imagen de fondo -->
+    <img
+      src="landing-image.jpg"  <!-- cámbialo por el nombre real: p.ej. landing-bg.jpg -->
+      alt="Landing pages"
+      class="absolute inset-0 w-full h-full object-cover object-center z-0"
+      loading="lazy"
+    />
+
+    <!-- Overlay para legibilidad (más fuerte a la izquierda, más sutil a la derecha) -->
+    <div class="absolute inset-0 z-10 bg-gradient-to-r from-black/70 via-black/45 to-black/20"></div>
+
+    <!-- Texto + CTAs -->
+    <div class="absolute inset-0 z-20 flex items-center justify-center md:justify-end px-4">
+      <div class="max-w-3xl md:max-w-xl text-center md:text-left md:mr-12">
+        <h2 class="reveal pop text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+          Landing pages que convierten
+        </h2>
+
+        <p class="reveal pop mt-2 text-white/80 text-sm md:text-lg">
+          Una página, un objetivo claro: captar leads, agendar citas o vender.
+        </p>
+
+        <p class="reveal pop mt-4 text-white/75 text-sm md:text-base">
+          Diseño rápido, responsive y con mensajes directos. Integración con WhatsApp/Instagram y analítica.
+        </p>
+
+        <div class="reveal pop mt-6 flex flex-wrap gap-3 justify-center md:justify-start">
+          <a href="#contacto"
+             class="px-5 py-3 rounded-xl bg-white text-neutral-900 font-semibold shadow-glow hover:bg-white/90">
+            Cotizar landing
+          </a>
+          <a href="#galeria"
+             class="px-5 py-3 rounded-xl border border-white/20 text-white hover:border-primary/60 hover:text-primary">
+            Ver ejemplos
           </a>
         </div>
       </div>
