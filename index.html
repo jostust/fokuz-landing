@@ -86,16 +86,15 @@
   /* =========================
      FAB (botón flotante)
   ========================== */
-  .fab-bubble {
-    transition: transform .25s ease, opacity .25s ease;
-    transform: translateY(8px) scale(.9);
-    opacity: 0;
-  }
-  .fab-open .fab-bubble {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-
+ .fab-bubble{
+  transition: transform .25s ease, opacity .25s ease;
+  transform: translateY(8px) scale(.9);
+  opacity: 0;
+}
+.fab-open .fab-bubble{
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
   /* =========================
      HERO / LANDING PAGES
      (bloques tipo branding / web)
@@ -175,7 +174,7 @@
 
     <!-- Navegación escritorio -->
     <nav class="hidden md:flex items-center gap-8 text-neutral-900">
-      <a href="#servicios" class="hover:text-primary">Servicios</a>
+      <a href="#branding" class="hover:text-primary">Servicios</a>
       <a href="#porque" class="hover:text-primary">¿Por qué FOKUZ?</a>
       <a href="#galeria" class="hover:text-primary">Galería</a>
       <a href="#contacto" class="hover:text-primary">Contacto</a>
@@ -184,7 +183,7 @@
 
   <!-- Menú móvil -->
   <div id="mobile-menu" class="hidden md:hidden flex flex-col items-center gap-6 py-6 bg-white text-neutral-900">
-    <a href="#servicios">Servicios</a>
+    <a href="#branding">Servicios</a>
     <a href="#porque">¿Por qué FOKUZ?</a>
     <a href="#galeria">Galería</a>
     <a href="#contacto">Contacto</a>
@@ -216,7 +215,7 @@
   pósters y videos que elevan tu marca al siguiente nivel.</p>
             <div class="mt-8 flex flex-wrap gap-4">
               <a href="#galeria" class="px-5 py-3 rounded-xl bg-white text-neutral-900 font-semibold hover:bg-white/90">Ver portafolio</a>
-              <a href="#servicios" class="px-5 py-3 rounded-xl border border-white/20 hover:border-primary/60 hover:text-primary">Nuestros servicios</a>
+              <a href="#branding" class="px-5 py-3 rounded-xl border border-white/20 hover:border-primary/60 hover:text-primary">Nuestros servicios</a>
             </div>
           </div>
 
@@ -704,71 +703,61 @@
     mobileMenu.classList.toggle('hidden');
   });
 </script>
-    <!-- FAB flotante: usa tus iconos SVG -->
-<div id="fab" class="fixed bottom-4 right-4 z-50">
+ <!-- FAB flotante -->
+<div id="fab" class="fixed bottom-4 right-4 z-[200]">
   <!-- Burbujas -->
-  <div id="fab-bubbles" class="absolute bottom-16 right-0 flex flex-col items-end gap-2">
+  <div id="fab-bubbles" class="absolute bottom-16 right-0 flex flex-col items-end gap-2 pointer-events-none">
     <!-- WhatsApp -->
     <a href="https://wa.me/525576671603?text=Hola%20estoy%20interesado%20en%20información%20para"
        target="_blank" rel="noopener"
-       class="fab-bubble h-12 w-12 rounded-full bg-transparent shadow-lg flex items-center justify-center ring-1 ring-white/10"
-       title="WhatsApp" style="transition-delay: 40ms;">
-      <img src="/whatsapp-icon.svg" alt="WhatsApp" class="h-7 w-7" loading="lazy">
+       class="fab-bubble pointer-events-auto h-12 w-12 rounded-full bg-transparent shadow-lg flex items-center justify-center ring-1 ring-white/10"
+       title="WhatsApp" style="transition-delay:40ms;">
+      <img src="whatsapp-icon.svg" alt="WhatsApp" class="h-7 w-7" loading="lazy">
     </a>
 
     <!-- Instagram -->
     <a href="https://www.instagram.com/fokuz.design" target="_blank" rel="noopener"
-       class="fab-bubble h-12 w-12 rounded-full bg-transparent shadow-lg flex items-center justify-center ring-1 ring-white/10"
-       title="Instagram" style="transition-delay: 90ms;">
-      <img src="/instagram.icon.svg" alt="Instagram" class="h-7 w-7" loading="lazy">
+       class="fab-bubble pointer-events-auto h-12 w-12 rounded-full bg-transparent shadow-lg flex items-center justify-center ring-1 ring-white/10"
+       title="Instagram" style="transition-delay:90ms;">
+      <img src="instagram.icon.svg" alt="Instagram" class="h-7 w-7" loading="lazy">
     </a>
 
     <!-- Email -->
-    <a href="mailto:fokuzdesignmx@gmail.com"
-       class="fab-bubble h-12 w-12 rounded-full bg-transparent shadow-lg flex items-center justify-center ring-1 ring-white/10"
-       title="Email" style="transition-delay: 140ms;">
-      <img src="/mail-icon.svg" alt="Email" class="h-7 w-7" loading="lazy">
+    <a href="mailto:fokuzdesignmx@gmail.com?subject=Quiero%20cotizar"
+       class="fab-bubble pointer-events-auto h-12 w-12 rounded-full bg-transparent shadow-lg flex items-center justify-center ring-1 ring-white/10"
+       title="Email" style="transition-delay:140ms;">
+      <img src="mail-icon.svg" alt="Email" class="h-7 w-7" loading="lazy">
     </a>
   </div>
 
-  <!-- Botón principal (siempre visible) -->
-  <button id="fab-toggle"
-          class="h-14 w-14 rounded-full bg-transparent text-white shadow-xl ring-1 ring-white/10 flex items-center justify-center"
-          aria-expanded="false" aria-controls="fab-bubbles" title="Contacto">
-    <img src="/contact-icon.svg" alt="Contacto" class="h-7 w-7" loading="lazy">
-  </button>
-  </div>
-
-  <!-- Botón principal (chat) -->
+  <!-- Botón principal -->
   <button id="fab-toggle"
           class="h-14 w-14 rounded-full bg-primary text-white shadow-xl ring-1 ring-white/10 flex items-center justify-center"
-          aria-expanded="false" aria-controls="fab-bubbles" title="Contacto">
-    <!-- Ícono chat -->
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-         viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 01-4-.8L3 20l.8-4A8.96 8.96 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-    </svg>
+          aria-controls="fab-bubbles" aria-expanded="false" title="Contacto">
+    <img src="contact-icon.svg" alt="Contacto" class="h-7 w-7" loading="lazy">
   </button>
 </div>
-    <script>
-  // Toggle del FAB (abre/cierra burbujas)
-  (function () {
-    const fab = document.getElementById('fab');
-    const fabToggle = document.getElementById('fab-toggle');
-    if (fab && fabToggle) {
-      fabToggle.addEventListener('click', () => {
-        fab.classList.toggle('fab-open');
-        fabToggle.setAttribute(
-          'aria-expanded',
-          fab.classList.contains('fab-open') ? 'true' : 'false'
-        );
-      });
+
+<script>
+  // Toggle: añade/quita .fab-open en el contenedor
+  const fabRoot   = document.getElementById('fab');
+  const fabToggle = document.getElementById('fab-toggle');
+
+  fabToggle.addEventListener('click', (e) => {
+    e.stopPropagation();                            // no cierres al instante
+    const open = fabRoot.classList.toggle('fab-open');
+    fabToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  // Cerrar al hacer click fuera
+  document.addEventListener('click', (e) => {
+    if (!fabRoot.contains(e.target)) {
+      fabRoot.classList.remove('fab-open');
+      fabToggle.setAttribute('aria-expanded', 'false');
     }
-  })();
-</script>
-    <script>
-  (function () {
+  });
+</script> 
+      (function () {
     const section = document.querySelector('#branding .scroll-clip');
     const video   = document.getElementById('brandingVideo');
     const overlay = document.getElementById('brandingOverlay');
@@ -849,7 +838,5 @@
         }
       });
     </script>
-  </body>
-</html>
   </body>
 </html>
