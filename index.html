@@ -486,48 +486,54 @@
 
   </div>
 </section>
-  <!-- PÓSTERS PROMOCIONALES -->
-<section id="posters" class="py-20 md:py-32 border-t border-white/10">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid md:grid-cols-2 items-center gap-10">
+  <!-- POSTERS PROMOCIONALES -->
+<section id="posters" class="py-16 md:py-24 border-t border-white/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 items-center gap-10">
 
-      <!-- TEXTO: siempre primero en el HTML -->
-      <div class="reveal pop md:col-start-1">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">
-          Pósters promocionales
-        </h2>
-        <p class="text-white/70 mb-6">
-          Diseñamos piezas gráficas impactantes para <span class="text-primary font-semibold">redes sociales</span>, 
-          <span class="text-primary font-semibold">WhatsApp</span> y <span class="text-primary font-semibold">campañas digitales</span>. 
-          Mantén tu comunicación visual fresca, consistente y lista para convertir seguidores en clientes.
-        </p>
-        <div class="flex gap-4">
-          <a href="#contacto"
-             class="px-5 py-3 rounded-xl bg-primary text-white font-semibold shadow-glow hover:bg-primary/90">
-            Cotiza pósters
-          </a>
-          <a href="#galeria"
-             class="px-5 py-3 rounded-xl border border-white/20 hover:border-primary/60 hover:text-primary">
-            Ver ejemplos
-          </a>
-        </div>
+    <!-- TEXTO (siempre primero en el código) -->
+    <div class="reveal order-1 md:order-2">
+      <p class="uppercase tracking-widest text-xs text-white/60 mb-3">
+        Diseño gráfico que vende
+      </p>
+
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">
+        Pósters promocionales
+      </h2>
+
+      <p class="mt-4 text-white/80 max-w-prose">
+        Diseñamos piezas gráficas impactantes para
+        <strong class="text-primary font-semibold">redes sociales</strong>,
+        <strong class="text-primary font-semibold">WhatsApp</strong> y
+        <strong class="text-primary font-semibold">campañas digitales</strong>.
+        Comunicación visual fresca y consistente para
+        <strong class="text-primary font-semibold">convertir seguidores en clientes</strong>.
+      </p>
+
+      <div class="mt-6 flex gap-3">
+        <a href="#contacto"
+           class="px-5 py-3 rounded-xl bg-white text-neutral-900 font-semibold shadow-glow hover:bg-white/90">
+          Cotiza pósters
+        </a>
+        <a href="#galeria"
+           class="px-5 py-3 rounded-xl border border-white/20 hover:border-primary/60 hover:text-primary">
+          Ver ejemplos
+        </a>
       </div>
-
-      <!-- VIDEO: va segundo en HTML, aparece debajo en móvil -->
-      <div class="reveal md:col-start-2">
-        <div class="relative aspect-[4/3] md:aspect-[16/10] lg:aspect-[5/3] max-w-xl md:max-w-none mx-auto
-                    rounded-3xl overflow-hidden bg-neutral-900/40 border border-white/10">
-          <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline>
-            <source src="posters-video.mp4" type="video/mp4" />
-          </video>
-          <div class="absolute inset-0 pointer-events-none ring-1 ring-white/10 rounded-3xl"></div>
-        </div>
-      </div>
-
     </div>
+
+    <!-- VIDEO (siempre segundo en el código) -->
+    <div class="reveal order-2 md:order-1">
+      <div class="relative aspect-[4/3] md:aspect-[5/4] max-w-xl mx-auto w-full rounded-3xl overflow-hidden bg-neutral-900/40 border border-white/10">
+        <video src="posters-video.mp4"
+               autoplay muted loop playsinline
+               class="absolute inset-0 w-full h-full object-cover"></video>
+        <div class="absolute inset-0 pointer-events-none ring-1 ring-white/10 rounded-3xl"></div>
+      </div>
+    </div>
+
   </div>
-</section>
-      <!-- SERVICIOS -->
+</section> 
+  <!-- SERVICIOS -->
       <section id="servicios" class="py-16 md:py-24 border-t border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="reveal text-center max-w-2xl mx-auto">
