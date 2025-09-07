@@ -738,60 +738,54 @@
   </button>
 </div>
 
+<!-- ===== JS: FAB + animación de branding (único bloque) ===== -->
 <script>
-  // Toggle: añade/quita .fab-open en el contenedor
-  const fabRoot   = document.getElementById('fab');
-  const fabToggle = document.getElementById('fab-toggle');
+  // --- FAB (abre/cierra burbujas) ---
+  (function () {
+    const fab = document.getElementById('fab');
+    const fabToggle = document.getElementById('fab-toggle');
+    if (!fab || !fabToggle) return;
 
-  fabToggle.addEventListener('click', (e) => {
-    e.stopPropagation();                            // no cierres al instante
-    const open = fabRoot.classList.toggle('fab-open');
-    fabToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
+    fabToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      fab.classList.toggle('fab-open');
+      fabToggle.setAttribute(
+        'aria-expanded',
+        fab.classList.contains('fab-open') ? 'true' : 'false'
+      );
+    });
 
-  // Cerrar al hacer click fuera
-  document.addEventListener('click', (e) => {
-    if (!fabRoot.contains(e.target)) {
-      fabRoot.classList.remove('fab-open');
-      fabToggle.setAttribute('aria-expanded', 'false');
-    }
-  });
-</script> 
-      (function () {
-    const section = document.querySelector('#branding .scroll-clip');
+    // Cerrar si haces clic fuera
+    document.addEventListener('click', (e) => {
+      if (!fab.contains(e.target)) {
+        fab.classList.remove('fab-open');
+        fabToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+
+  // --- Animación de video en sección #branding ---
+  (function () {
+    const section = document.getElementById('branding');
     const video   = document.getElementById('brandingVideo');
     const overlay = document.getElementById('brandingOverlay');
-
     if (!section || !video || !overlay) return;
 
-    const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
+    const mm = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mm.matches) return;
 
     function onScroll() {
       const rect = section.getBoundingClientRect();
       const vh   = window.innerHeight;
-
-      // Progreso 0 → 1 a lo largo de la sección
-      const total = rect.height - vh;
-      const seen  = clamp((vh - rect.top) / (total || 1), 0, 1);
-
-      // Zoom muy sutil del video (no marear ni distraer)
-      const scale = 1 + seen * 0.18; // 18% máx
-      video.style.transform = `scale(${scale})`;
-
-      // Ligera variación del overlay (más claro al inicio, un poco más oscuro al final)
-      const alpha = 0.55 + seen * 0.10; // 0.55 → 0.65
-      overlay.style.backgroundColor = `rgba(0,0,0,${alpha})`;
+      if (rect.top < vh && rect.bottom > 0) {
+        const progress = 1 - rect.top / vh;          // 0→1
+        const scale    = 1 + progress * 0.10;        // zoom sutil (10%)
+        const alpha    = 0.3 + progress * 0.20;      // overlay a 0.3→0.5
+        video.style.transform = `scale(${scale})`;
+        overlay.style.backgroundColor = `rgba(0,0,0,${alpha})`;
+      }
     }
 
-    // Soporte para “reduced motion”
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (mq.matches) {
-      video.style.transform = 'none';
-      overlay.style.backgroundColor = 'rgba(0,0,0,0.6)';
-      return;
-    }
-
-    // Listeners
     let ticking = false;
     function request() {
       if (!ticking) {
@@ -799,44 +793,11 @@
         ticking = true;
       }
     }
+
     window.addEventListener('scroll', request, { passive: true });
-    window.addEventListener('resize', request);
+    window.addEventListener('resize', request, { passive: true });
     onScroll();
   })();
 </script>
-    <script>
-      // Toggle del FAB (abre/cierra burbujas)
-      (function () {
-        const fab = document.getElementById('fab');
-        const fabToggle = document.getElementById('fab-toggle');
-        if (fab && fabToggle) {
-          fabToggle.addEventListener('click', () => {
-            fab.classList.toggle('fab-open');
-            fabToggle.setAttribute(
-              'aria-expanded',
-              fab.classList.contains('fab-open') ? 'true' : 'false'
-            );
-          });
-        }
-      })();
-    </script>
-
-    <!-- Script para animación del video de branding -->
-    <script>
-      const brandingVideo = document.getElementById("brandingVideo");
-      const brandingOverlay = document.getElementById("brandingOverlay");
-
-      window.addEventListener("scroll", () => {
-        const section = document.getElementById("branding");
-        const rect = section.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-
-        if (rect.top < windowHeight && rect.bottom > 0) {
-          const progress = 1 - rect.top / windowHeight;
-          brandingVideo.style.transform = `scale(${1 + progress * 0.1})`;
-          brandingOverlay.style.backgroundColor = `rgba(0,0,0,${0.3 + progress * 0.2})`;
-        }
-      });
-    </script>
   </body>
 </html>
