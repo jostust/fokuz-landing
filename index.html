@@ -660,33 +660,91 @@
 
   </div>
  </section>
-      <!-- GALERÍA -->
-      <section id="galeria" class="py-16 md:py-24 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="reveal text-center max-w-xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold">Galería</h2>
-            <p class="mt-3 text-white/70">Una selección de trabajos recientes. (Reemplaza los placeholders con tus imágenes).</p>
-          </div>
+   <!-- GALERÍA -->
+<section id="galeria" class="py-16 md:py-24 border-t border-white/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10 md:mb-14">
+      <p class="uppercase tracking-widest text-xs text-white/60 mb-3">Muestras recientes</p>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">Galería</h2>
+      <p class="mt-3 text-white/70 max-w-xl mx-auto">Seis piezas destacadas de branding, social, web y exterior.</p>
+    </div>
 
-          <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- 9 placeholders -->
-            <!-- Cada figura puede reemplazarse por <img src="/ruta.jpg" alt="Proyecto" class="..."/> -->
-            <figure class="reveal group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 aspect-[4/5]">
-              <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-white/0"></div>
-              <figcaption class="absolute bottom-0 left-0 right-0 p-4 text-sm bg-neutral-900/50 backdrop-blur translate-y-8 group-hover:translate-y-0 transition">Proyecto 1 — Stickers</figcaption>
-            </figure>
-            <figure class="reveal group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 aspect-[4/5]"><figcaption class="absolute bottom-0 left-0 right-0 p-4 text-sm bg-neutral-900/50 backdrop-blur translate-y-8 group-hover:translate-y-0 transition">Proyecto 2 — Póster</figcaption></figure>
-            <figure class="reveal group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 aspect-[4/5]"><figcaption class="absolute bottom-0 left-0 right-0 p-4 text-sm bg-neutral-900/50 backdrop-blur translate-y-8 group-hover:translate-y-0 transition">Proyecto 3 — Video</figcaption></figure>
-            <figure class="reveal group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 aspect-[4/5]"><figcaption class="absolute bottom-0 left-0 right-0 p-4 text-sm bg-neutral-900/50 backdrop-blur translate-y-8 group-hover:translate-y-0 transition">Proyecto 4 — Catálogo</figcaption></figure>
-            <figure class="reveal group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 aspect-[4/5]"><figcaption class="absolute bottom-0 left-0 right-0 p-4 text-sm bg-neutral-900/50 backdrop-blur translate-y-8 group-hover:translate-y-0 transition">Proyecto 5 — Branding</figcaption></figure>
-            <figure class="reveal group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 aspect-[4/5]"><figcaption class="absolute bottom-0 left-0 right-0 p-4 text-sm bg-neutral-900/50 backdrop-blur translate-y-8 group-hover:translate-y-0 transition">Proyecto 6 — Redes</figcaption></figure>
-            <figure class="reveal group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 aspect-[4/5]"><figcaption class="absolute bottom-0 left-0 right-0 p-4 text-sm bg-neutral-900/50 backdrop-blur translate-y-8 group-hover:translate-y-0 transition">Proyecto 7 — Fotomontaje</figcaption></figure>
-            <figure class="reveal group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 aspect-[4/5]"><figcaption class="absolute bottom-0 left-0 right-0 p-4 text-sm bg-neutral-900/50 backdrop-blur translate-y-8 group-hover:translate-y-0 transition">Proyecto 8 — Producto</figcaption></figure>
-            <figure class="reveal group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 aspect-[4/5]"><figcaption class="absolute bottom-0 left-0 right-0 p-4 text-sm bg-neutral-900/50 backdrop-blur translate-y-8 group-hover:translate-y-0 transition">Proyecto 9 — Motion</figcaption></figure>
-          </div>
+    <!-- GRID: móvil 2 col / desktop 3 col -->
+    <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
+      <!-- 1) Branding — Lomaz Tech -->
+      <button class="group relative overflow-hidden rounded-2xl bg-neutral-900/50 ring-1 ring-white/10 focus:outline-none"
+              data-src="gallery/lomaz-bag.jpg" data-caption="Branding — Lomaz Tech · Bolsa boutique (foil plata)">
+        <div class="aspect-[3/4] w-full">
+          <img src="gallery/lomaz-bag.jpg" alt="Branding — Lomaz Tech, bolsa boutique"
+               class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy">
         </div>
-      </section>
+        <span class="pointer-events-none absolute inset-x-0 bottom-0 p-2 sm:p-3 text-[11px] sm:text-xs text-white/80 bg-gradient-to-t from-black/60 to-transparent">
+          Branding premium para producto
+        </span>
+      </button>
 
+      <!-- 2) Redes sociales — Evenement (iPad) -->
+      <button class="group relative overflow-hidden rounded-2xl bg-neutral-900/50 ring-1 ring-white/10 focus:outline-none"
+              data-src="gallery/evenement-ipad.jpg" data-caption="Redes sociales — Evenement · Feed curado y highlights">
+        <div class="aspect-[3/4] w-full">
+          <img src="gallery/evenement-ipad.jpg" alt="Evenement, feed de Instagram en iPad"
+               class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy">
+        </div>
+        <span class="pointer-events-none absolute inset-x-0 bottom-0 p-2 sm:p-3 text-[11px] sm:text-xs text-white/80 bg-gradient-to-t from-black/60 to-transparent">
+          Social media listo para publicar
+        </span>
+      </button>
+
+      <!-- 3) Eventos / Social proof — SoulDance (logo 3D) -->
+      <button class="group relative overflow-hidden rounded-2xl bg-neutral-900/50 ring-1 ring-white/10 focus:outline-none"
+              data-src="gallery/souldance-wall.jpg" data-caption="Eventos / Social proof — SoulDance · Identidad aplicada en espacio real">
+        <div class="aspect-[3/4] w-full">
+          <img src="gallery/souldance-wall.jpg" alt="SoulDance, logo 3D en pared de estudio de danza"
+               class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy">
+        </div>
+        <span class="pointer-events-none absolute inset-x-0 bottom-0 p-2 sm:p-3 text-[11px] sm:text-xs text-white/80 bg-gradient-to-t from-black/60 to-transparent">
+          Identidad aplicada en locación
+        </span>
+      </button>
+
+      <!-- 4) Product ads — DressNY -->
+      <button class="group relative overflow-hidden rounded-2xl bg-neutral-900/50 ring-1 ring-white/10 focus:outline-none"
+              data-src="gallery/dressny-box.jpg" data-caption="Product Ads — DressNY · Unboxing y empaque">
+        <div class="aspect-[3/4] w-full">
+          <img src="gallery/dressny-box.jpg" alt="DressNY, caja premium con sello"
+               class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy">
+        </div>
+        <span class="pointer-events-none absolute inset-x-0 bottom-0 p-2 sm:p-3 text-[11px] sm:text-xs text-white/80 bg-gradient-to-t from-black/60 to-transparent">
+          Unboxing que enamora
+        </span>
+      </button>
+
+      <!-- 5) Posters/Exterior — Artificial Flores -->
+      <button class="group relative overflow-hidden rounded-2xl bg-neutral-900/50 ring-1 ring-white/10 focus:outline-none"
+              data-src="gallery/flowers-aframe.jpg" data-caption="Posters / Exterior — Artificial Flores · A-frame en calle">
+        <div class="aspect-[3/4] w-full">
+          <img src="gallery/flowers-aframe.jpg" alt="Artificial Flores, A-frame con póster exterior"
+               class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy">
+        </div>
+        <span class="pointer-events-none absolute inset-x-0 bottom-0 p-2 sm:p-3 text-[11px] sm:text-xs text-white/80 bg-gradient-to-t from-black/60 to-transparent">
+          Gráfica exterior lista para calle
+        </span>
+      </button>
+
+      <!-- 6) Web/Ecommerce — JustClick MX -->
+      <button class="group relative overflow-hidden rounded-2xl bg-neutral-900/50 ring-1 ring-white/10 focus:outline-none"
+              data-src="gallery/justclick-laptop.jpg" data-caption="Web / Ecommerce — JustClick MX · Homepage orientada a venta">
+        <div class="aspect-[3/4] w-full">
+          <img src="gallery/justclick-laptop.jpg" alt="JustClick MX, sitio web en laptop"
+               class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy">
+        </div>
+        <span class="pointer-events-none absolute inset-x-0 bottom-0 p-2 sm:p-3 text-[11px] sm:text-xs text-white/80 bg-gradient-to-t from-black/60 to-transparent">
+          Landing y catálogo de productos
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
       <!-- OPINIONES / CLIENTES -->
       <section id="clientes" class="py-16 md:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -881,6 +939,39 @@
     window.addEventListener('scroll', request, { passive: true });
     window.addEventListener('resize', request, { passive: true });
     onScroll();
+  })();
+</script>
+    <script>
+  (function () {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCap = document.getElementById('lightboxCap');
+    const closeBtn = document.getElementById('lightboxClose');
+
+    function openLightbox(src, cap, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || '';
+      lightboxCap.textContent = cap || '';
+      lightbox.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lightbox.classList.add('hidden');
+      document.body.style.overflow = '';
+      lightboxImg.src = '';
+    }
+
+    // Click en tarjetas
+    document.getElementById('galleryGrid').addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-src]');
+      if (!btn) return;
+      openLightbox(btn.dataset.src, btn.dataset.caption, btn.querySelector('img')?.alt);
+    });
+
+    // Cerrar
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
   })();
 </script>
   </body>
