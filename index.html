@@ -1011,14 +1011,18 @@
     <figcaption id="lightboxCap" class="text-center text-white/80"></figcaption>
   </figure>
 </div>
-    <script>
+<script>
 (function () {
-  // 1) Tomamos cualquier item dentro del grid que tenga data-src (tu caso)
-  //    y, por compatibilidad, también <img.gallery-item> o <img src> sueltos.
-  const nodes = Array.from(document.querySelectorAll(
-    '#galleryGrid [data-src], #galleryGrid .gallery-item, #galleryGrid img[src]'
-  ));
-  if (!nodes.length) return;
+  // 1) Usa SOLO los nodos con data-src dentro del grid.
+  const nodes = Array.from(document.querySelectorAll('#galleryGrid [data-src]'));
+
+  // Si por alguna razón no hubiera data-src, cae a un fallback simple:
+  const fallback = !nodes.length
+    ? Array.from(document.querySelectorAll('#galleryGrid .gallery-item, #galleryGrid img[src]'))
+    : [];
+
+  const baseNodes = nodes.length ? nodes : fallback;
+  if (!baseNodes.length) return;
 
   // 2) Referencias al modal
   const lightbox = document.getElementById('lightbox');
@@ -1029,22 +1033,24 @@
   const btnPrev = document.getElementById('lightboxPrev');
   const btnNext = document.getElementById('lightboxNext');
 
-  // 3) Normalizamos arrays de imágenes y captions
-  const items = nodes.map(n => {
-    // si es tu <button data-src>, usamos ese src y su data-caption
-    const src = n.getAttribute('data-src') || (n.src ? n.src : (n.querySelector('img')?.src || ''));
-    const cap = n.getAttribute('data-caption') || (n.alt ? n.alt : (n.querySelector('img')?.alt || ''));
-    return { src, cap, el: n };
-  }).filter(x => !!x.src);
+  // 3) Normaliza items y elimina duplicados por src
+  const seen = new Set();
+  const items = baseNodes.map(el => {
+    const src = el.getAttribute('data-src') || el.getAttribute('src') || el.querySelector('img')?.getAttribute('src') || '';
+    const cap = el.getAttribute('data-caption') || el.getAttribute('alt') || el.querySelector('img')?.getAttribute('alt') || '';
+    return { src, cap, el };
+  }).filter(it => {
+    if (!it.src) return false;
+    if (seen.has(it.src)) return false;
+    seen.add(it.src);
+    return true;
+  });
 
-  let idx = 0;
-  let touchStartX = 0;
+  let idx = 0, touchStartX = 0;
 
   function show(i) {
-    idx = (i + items.length) % items.length; // loop
+    idx = (i + items.length) % items.length;
     const { src, cap } = items[idx];
-
-    // animación sutil
     img.style.opacity = 0;
     img.style.transform = 'scale(0.96)';
     img.src = src;
@@ -1077,22 +1083,20 @@
     }, 200);
   }
 
-  // 4) Click/teclado en cada card
+  // 4) Eventos de apertura
   items.forEach((it, i) => {
-    const el = it.el;
-    el.style.cursor = 'zoom-in';
-    el.addEventListener('click', () => open(i));
-    el.setAttribute('tabindex', '0');
-    el.addEventListener('keydown', (e) => { if (e.key === 'Enter') open(i); });
+    it.el.style.cursor = 'zoom-in';
+    it.el.addEventListener('click', () => open(i));
+    it.el.setAttribute('tabindex', '0');
+    it.el.addEventListener('keydown', (e) => { if (e.key === 'Enter') open(i); });
   });
 
-  // 5) Controles del modal
+  // 5) Controles del lightbox
   btnClose.addEventListener('click', close);
   back.addEventListener('click', close);
   btnPrev.addEventListener('click', () => show(idx - 1));
   btnNext.addEventListener('click', () => show(idx + 1));
 
-  // teclado global
   window.addEventListener('keydown', (e) => {
     if (lightbox.classList.contains('hidden')) return;
     if (e.key === 'Escape') close();
@@ -1100,13 +1104,11 @@
     if (e.key === 'ArrowRight') show(idx + 1);
   });
 
-  // gestos móviles
   lightbox.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
   lightbox.addEventListener('touchend', (e) => {
     const dx = e.changedTouches[0].clientX - touchStartX;
     if (Math.abs(dx) > 40) (dx > 0 ? show(idx - 1) : show(idx + 1));
   }, { passive: true });
 })();
-</script>
-  </body>
+</script>  </body>
 </html>
