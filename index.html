@@ -771,46 +771,36 @@
            
             </div>
 
-       <!-- Formulario (Netlify listo + honeypot + redirect) -->
-<form name="contacto"
-      method="POST"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-      action="/thanks.html"
-      class="reveal rounded-2xl border border-white/10 bg-white/5 p-6">
-
-  <!-- Requerido por Netlify -->
+    <!-- Formulario (Netlify Ready) -->
+<form name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html" class="reveal rounded-2xl border border-white/10 bg-white/5 p-6">
+  <!-- este hidden debe coincidir con el nombre del formulario -->
   <input type="hidden" name="form-name" value="contacto">
 
-  <!-- Honeypot anti-spam (oculto) -->
-  <p class="hidden" aria-hidden="true">
+  <!-- honeypot (antispam) -->
+  <p class="hidden">
     <label>No llenar: <input name="bot-field" /></label>
   </p>
 
   <div class="grid gap-4">
     <label class="block">
       <span class="text-sm text-white/80">Nombre</span>
-      <input name="nombre" required
-             class="mt-1 w-full rounded-lg bg-neutral-900 border border-white/10 px-4 py-3 outline-none focus:border-primary/60">
+      <input name="nombre" required class="mt-1 w-full rounded-lg bg-neutral-900 border border-white/10 px-4 py-3 outline-none focus:border-primary/60" />
     </label>
 
     <label class="block">
       <span class="text-sm text-white/80">Email</span>
-      <input type="email" name="email" required
-             class="mt-1 w-full rounded-lg bg-neutral-900 border border-white/10 px-4 py-3 outline-none focus:border-primary/60">
+      <input type="email" name="email" required class="mt-1 w-full rounded-lg bg-neutral-900 border border-white/10 px-4 py-3 outline-none focus:border-primary/60" />
     </label>
 
     <label class="block">
       <span class="text-sm text-white/80">Mensaje</span>
-      <textarea name="mensaje" rows="4" required
-                class="mt-1 w-full rounded-lg bg-neutral-900 border border-white/10 px-4 py-3 outline-none focus:border-primary/60"></textarea>
+      <textarea name="mensaje" rows="4" required class="mt-1 w-full rounded-lg bg-neutral-900 border border-white/10 px-4 py-3 outline-none focus:border-primary/60"></textarea>
     </label>
-  </div>
 
-  <button type="submit"
-          class="mt-2 inline-flex justify-center px-5 py-3 rounded-xl bg-white text-neutral-900 font-semibold hover:bg-white/90">
-    Enviar
-  </button>
+    <button type="submit" class="mt-2 inline-flex justify-center px-5 py-3 rounded-xl bg-white text-neutral-900 font-semibold hover:bg-white/90">
+      Enviar
+    </button>
+  </div>
 </form>
           </div>
         </div>
