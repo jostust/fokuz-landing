@@ -727,6 +727,39 @@
     </div>
   </div>
 </section>
+      <!-- Modal Lightbox -->
+<div id="lightbox" class="fixed inset-0 z-[100] hidden">
+  <!-- Fondo -->
+  <div id="lightboxBack" class="absolute inset-0 bg-black/80 backdrop-blur-sm opacity-0 transition-opacity"></div>
+
+  <!-- Contenido centrado -->
+  <div class="relative h-full w-full flex items-center justify-center px-4">
+    <button id="lightboxClose" aria-label="Cerrar"
+      class="absolute top-5 right-5 md:top-8 md:right-8 bg-white/10 hover:bg-white/20 text-white rounded-full p-3">
+      ✕
+    </button>
+
+    <!-- Flecha izquierda -->
+    <button id="lightboxPrev" aria-label="Anterior"
+      class="absolute left-3 md:left-6 bg-white/10 hover:bg-white/20 text-white rounded-full p-3">
+      ‹
+    </button>
+
+    <!-- Imagen -->
+    <div class="max-w-5xl w-full">
+      <img id="lightboxImg"
+        class="mx-auto max-h-[78vh] w-auto rounded-2xl shadow-2xl border border-white/10 scale-95 opacity-0 transition-all duration-300"
+        alt="Vista ampliada">
+      <p id="lightboxCaption" class="text-center text-white/80 mt-3 text-sm"></p>
+    </div>
+
+    <!-- Flecha derecha -->
+    <button id="lightboxNext" aria-label="Siguiente"
+      class="absolute right-3 md:right-6 bg-white/10 hover:bg-white/20 text-white rounded-full p-3">
+      ›
+    </button>
+  </div>
+</div>
       <!-- OPINIONES / CLIENTES -->
       <section id="clientes" class="py-16 md:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -978,5 +1011,102 @@
     <figcaption id="lightboxCap" class="text-center text-white/80"></figcaption>
   </figure>
 </div>
+    <script>
+(function () {
+  // 1) Tomamos cualquier item dentro del grid que tenga data-src (tu caso)
+  //    y, por compatibilidad, también <img.gallery-item> o <img src> sueltos.
+  const nodes = Array.from(document.querySelectorAll(
+    '#galleryGrid [data-src], #galleryGrid .gallery-item, #galleryGrid img[src]'
+  ));
+  if (!nodes.length) return;
+
+  // 2) Referencias al modal
+  const lightbox = document.getElementById('lightbox');
+  const back = document.getElementById('lightboxBack');
+  const img = document.getElementById('lightboxImg');
+  const caption = document.getElementById('lightboxCaption');
+  const btnClose = document.getElementById('lightboxClose');
+  const btnPrev = document.getElementById('lightboxPrev');
+  const btnNext = document.getElementById('lightboxNext');
+
+  // 3) Normalizamos arrays de imágenes y captions
+  const items = nodes.map(n => {
+    // si es tu <button data-src>, usamos ese src y su data-caption
+    const src = n.getAttribute('data-src') || (n.src ? n.src : (n.querySelector('img')?.src || ''));
+    const cap = n.getAttribute('data-caption') || (n.alt ? n.alt : (n.querySelector('img')?.alt || ''));
+    return { src, cap, el: n };
+  }).filter(x => !!x.src);
+
+  let idx = 0;
+  let touchStartX = 0;
+
+  function show(i) {
+    idx = (i + items.length) % items.length; // loop
+    const { src, cap } = items[idx];
+
+    // animación sutil
+    img.style.opacity = 0;
+    img.style.transform = 'scale(0.96)';
+    img.src = src;
+    caption.textContent = cap || '';
+    requestAnimationFrame(() => {
+      img.onload = () => {
+        img.style.opacity = 1;
+        img.style.transform = 'scale(1)';
+      };
+    });
+  }
+
+  function open(i) {
+    show(i);
+    lightbox.classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
+    requestAnimationFrame(() => {
+      back.classList.remove('opacity-0');
+      back.classList.add('opacity-100');
+    });
+  }
+
+  function close() {
+    back.classList.remove('opacity-100');
+    back.classList.add('opacity-0');
+    img.style.opacity = 0;
+    setTimeout(() => {
+      lightbox.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }, 200);
+  }
+
+  // 4) Click/teclado en cada card
+  items.forEach((it, i) => {
+    const el = it.el;
+    el.style.cursor = 'zoom-in';
+    el.addEventListener('click', () => open(i));
+    el.setAttribute('tabindex', '0');
+    el.addEventListener('keydown', (e) => { if (e.key === 'Enter') open(i); });
+  });
+
+  // 5) Controles del modal
+  btnClose.addEventListener('click', close);
+  back.addEventListener('click', close);
+  btnPrev.addEventListener('click', () => show(idx - 1));
+  btnNext.addEventListener('click', () => show(idx + 1));
+
+  // teclado global
+  window.addEventListener('keydown', (e) => {
+    if (lightbox.classList.contains('hidden')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show(idx - 1);
+    if (e.key === 'ArrowRight') show(idx + 1);
+  });
+
+  // gestos móviles
+  lightbox.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+  lightbox.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) (dx > 0 ? show(idx - 1) : show(idx + 1));
+  }, { passive: true });
+})();
+</script>
   </body>
 </html>
