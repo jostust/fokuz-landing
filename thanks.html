@@ -1,21 +1,136 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>¡Gracias!</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>¡Gracias! — FOKUZ DESIGN</title>
+
+  <!-- Tailwind CDN (igual que en index) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
-    body{margin:0;background:#0a0a0a;color:#fff;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial}
-    .box{max-width:720px;margin:12vh auto;padding:32px;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:rgba(255,255,255,.04)}
-    a{color:#60a5ff}
+    /* ===== Fondo animado (sutil) ===== */
+    :root{
+      --bg1:#0b0b0d;
+      --bg2:#0f1115;
+      --bg3:#111827;
+      --accent:#4da3ff; /* azul del sitio */
+      --metal1:#9aa2ad;
+      --metal2:#dde2ea;
+      --metal3:#7b8492;
+    }
+    body{
+      background:
+        radial-gradient(60% 80% at 20% 10%, #0c1624 0%, transparent 50%),
+        radial-gradient(70% 90% at 80% 30%, #0a1020 0%, transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2) 40%, var(--bg3));
+      animation: bgFloat 12s ease-in-out infinite alternate;
+    }
+    @keyframes bgFloat{
+      0%{ background-position: 0 0, 0 0, 0 0; }
+      100%{ background-position: 10px -20px, -20px 10px, 0 0; }
+    }
+
+    /* ===== Texto metálico + brillo ===== */
+    .metallic {
+      background: linear-gradient(
+        100deg,
+        var(--metal3) 0%,
+        var(--metal2) 18%,
+        var(--metal1) 32%,
+        var(--metal2) 48%,
+        var(--metal3) 65%,
+        #dfe4ec 82%,
+        var(--metal1) 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      position: relative;
+      text-shadow: 0 8px 30px rgba(255,255,255,.06);
+    }
+    .metallic::after{
+      /* Brillo que barre */
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(100deg, transparent 35%, rgba(255,255,255,.65) 50%, transparent 65%);
+      transform: translateX(-120%) skewX(-15deg);
+      animation: shine 3.4s ease-in-out 1s infinite;
+      -webkit-mask-image: linear-gradient(#000, #000);
+              mask-image: linear-gradient(#000, #000);
+    }
+    @keyframes shine{
+      0%   { transform: translateX(-120%) skewX(-15deg); }
+      55%  { transform: translateX(120%)  skewX(-15deg); }
+      100% { transform: translateX(120%)  skewX(-15deg); }
+    }
+
+    /* ===== Logo fondo con parallax sutil ===== */
+    .logo-bg{
+      pointer-events:none;
+      filter: drop-shadow(0 10px 40px rgba(77,163,255,.25)) blur(.2px);
+      opacity:.08;
+      transition: transform .25s ease-out;
+      will-change: transform;
+    }
+
+    /* ===== Botones con glow ===== */
+    .btn-primary{
+      box-shadow: 0 0 0 0 rgba(77,163,255,.0), inset 0 0 0 1px rgba(255,255,255,.12);
+      transition: box-shadow .25s, transform .15s;
+    }
+    .btn-primary:hover{
+      box-shadow: 0 0 24px 0 rgba(77,163,255,.45), inset 0 0 0 1px rgba(255,255,255,.18);
+      transform: translateY(-1px);
+    }
   </style>
 </head>
-<body>
-  <div class="box">
-    <h1>¡Gracias por escribirnos!</h1>
-    <p>Recibimos tu mensaje y te contactaremos muy pronto.</p>
-    <p><a href="/">Volver al inicio</a></p>
-  </div>
+<body class="min-h-screen text-white selection:bg-blue-500/40 selection:text-white">
+
+  <!-- Contenedor centrado -->
+  <main class="relative min-h-screen flex items-center justify-center px-6">
+    <!-- Logo grande de fondo -->
+    <img src="/logo-fokuz.png" alt="" class="logo-bg absolute w-[820px] max-w-[85vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10">
+
+    <!-- Tarjeta -->
+    <section class="relative w-full max-w-3xl rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-10 md:p-14">
+      <p class="uppercase tracking-[.35em] text-xs text-white/60 mb-3">Mensaje enviado</p>
+
+      <h1 class="metallic text-4xl md:text-6xl font-extrabold leading-[1.05]">
+        ¡Gracias por escribirnos!
+      </h1>
+
+      <p class="mt-5 text-white/80 md:text-lg max-w-prose">
+        Recibimos tu mensaje y te contactaremos muy pronto.
+        Mientras tanto, puedes volver al inicio o ver nuestro portafolio.
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/#hero" class="btn-primary inline-flex items-center gap-2 rounded-xl bg-white text-neutral-900 px-5 py-3 font-semibold hover:bg-white/95">
+          Volver al inicio
+        </a>
+        <a href="/#galeria" class="btn-primary inline-flex items-center gap-2 rounded-xl bg-neutral-900/60 px-5 py-3 font-semibold text-white">
+          Ver portafolio
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Parallax sutil del logo de fondo
+    (function(){
+      const el = document.querySelector('.logo-bg');
+      if(!el) return;
+      let rect = null;
+      function onMove(e){
+        if(!rect) rect = document.body.getBoundingClientRect();
+        const x = (e.clientX - rect.width/2) / rect.width;
+        const y = (e.clientY - rect.height/2) / rect.height;
+        el.style.transform =
+          `translate(-50%, -50%) translate(${x*12}px, ${y*10}px) scale(1)`;
+      }
+      window.addEventListener('mousemove', onMove, {passive:true});
+    })();
+  </script>
 </body>
 </html>
