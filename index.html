@@ -1091,6 +1091,62 @@
     if (Math.abs(dx) > 40) (dx > 0 ? show(idx - 1) : show(idx + 1));
   }, { passive: true });
 })();
-</script>  
+</script>
+    <!-- ====== i18n rápido: ES/EN con Google Translate ====== -->
+<!-- Botón flotante visible -->
+<div id="langSwitcher" style="
+  position: fixed; right: 16px; bottom: 16px; z-index: 9999;
+  background: rgba(255,255,255,.9); border: 1px solid rgba(0,0,0,.08);
+  border-radius: 999px; padding: 6px 10px; box-shadow: 0 6px 24px rgba(0,0,0,.12);
+  font: 600 14px/1.2 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;">
+  <button onclick="setLang('es')" style="margin:0 6px; border:none; background:none; cursor:pointer">ES</button> |
+  <button onclick="setLang('en')" style="margin:0 6px; border:none; background:none; cursor:pointer">EN</button>
+</div>
+
+<!-- Contenedor oculto del widget -->
+<div id="google_translate_element" style="display:none;"></div>
+
+<!-- Estilos para ocultar barra/branding feo de Google -->
+<style>
+  .goog-te-banner-frame{display:none !important;}
+  body{top:0 !important;}
+  .goog-logo-link, .goog-te-gadget span{display:none !important;}
+  .goog-te-gadget{font-size:0 !important;}
+</style>
+
+<!-- Script del traductor -->
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'es',              // idioma base de tu sitio
+      includedLanguages: 'es,en',      // idiomas permitidos
+      autoDisplay: false
+    }, 'google_translate_element');
+
+    // detección automática: si el navegador está en EN, cambia a EN
+    autoSwitchByBrowser();
+  }
+
+  function setLang(lang) {
+    // Cambia el idioma del widget programáticamente
+    var select = document.querySelector('.goog-te-combo');
+    if (!select) return;  // aún no cargó, reintenta
+    select.value = lang;
+    select.dispatchEvent(new Event('change'));
+  }
+
+  function autoSwitchByBrowser(retries = 20) {
+    const isEnglish = (navigator.language || navigator.userLanguage || 'es').toLowerCase().startsWith('en');
+    if (!isEnglish) return; // si no es EN, nos quedamos en ES
+
+    const select = document.querySelector('.goog-te-combo');
+    if (select) { setLang('en'); }
+    else if (retries > 0) {
+      setTimeout(() => autoSwitchByBrowser(retries - 1), 200); // espera a que cargue el widget
+    }
+  }
+</script>
+<!-- ====== /i18n rápido ====== -->
   </body>
 </html>
